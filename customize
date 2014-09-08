@@ -18,8 +18,8 @@ echo "* Configuring image specific packages.";
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
 (mkdir -p /opt/local/etc/munin/munstrap)
 curl -L "https://github.com/drscream/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | tar xz -C /opt/local/etc/munin/munstrap --strip-components=1
-## Create symlinks to activate munstrap
-(cd /opt/local/etc/munin; ln -s munstrap/static static; ln -s munstrap/templates templates)
+## rename original template and create symlinks to activate munstrap
+(cd /opt/local/etc/munin; mv static static-orig; mv templates templates-orig; ln -s munstrap/static static; ln -s munstrap/templates templates)
 
 # Clean up
 echo "* Cleaning up."
