@@ -14,6 +14,8 @@ set -o errexit
 echo "* Configuring image specific packages.";
 
 
+# Cleanup /var/munin in order to set the dataset mountpoint (must be empty)
+rm -r /var/munin/*
 # Download and extract munstrap to /opt/local/etc/munin/munstrap
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
 (mkdir -p /opt/local/etc/munin/munstrap)
