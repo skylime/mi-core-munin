@@ -3,6 +3,7 @@
 # Put customizations to your image in this file.
 
 MUNSTRAP_VERSION=0.1
+MUNIN_MASTER_ADMIN_VERSION=0.1
 
 # Custom versions and variables
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
@@ -13,15 +14,26 @@ set -o errexit
 # Configuring image specific packages
 echo "* Configuring image specific packages.";
 
-
 # Cleanup /var/munin in order to set the dataset mountpoint (must be empty)
 rm -r /var/munin/*
 # Download and extract munstrap to /opt/local/etc/munin/munstrap
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
 (mkdir -p /opt/local/etc/munin/munstrap)
 curl -L "https://github.com/drscream/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | tar xz -C /opt/local/etc/munin/munstrap --strip-components=1
-## rename original template and create symlinks to activate munstrap
+## Rename original template and create symlinks to activate munstrap
 (cd /opt/local/etc/munin; mv static static-orig; mv templates templates-orig; ln -s munstrap/static static; ln -s munstrap/templates templates)
+
+# Download and extract munin_master_admin to /opt/munin_master_admin
+echo "* Download and extract munin_master_admin to /opt/munin_master_admin"
+(mkdir -p /opt/munin_master_admin)
+curl -L "https://github.com/motu81/munin_master_admin/archive/${MUNIN_MASTER_ADMIN_VERSION}.tar.gz" | tar xz -C /opt/munin_master_admin --strip-components=1
+chown -R www:www /opt/munin_master_admin
+
+# Install required python packages
+pip install -r /opt/munin_master_admin/req.txt
+
+# Import gunicorn SMF manifest
+svccfg import /tmp/gunicorn.xml
 
 # Clean up
 echo "* Cleaning up."

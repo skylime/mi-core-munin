@@ -1,2 +1,5 @@
 munin-master
 nginx
+py27-gunicorn
+py27-pip
+py27-expat
