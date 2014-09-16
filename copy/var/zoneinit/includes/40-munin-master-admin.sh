@@ -9,3 +9,7 @@ echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': '/
 
 # Init django data and create admin user
 /opt/munin_master_admin/manage.py syncdb --noinput
+
+## Create cronjobs for munin_master_admin write_munin_config.py
+CRON="4,9,14,19,24,29,34,39,44,49,54,59 * * * * (/opt/munin_master_admin/manage.py write_munin_config)"
+(crontab -l 2>/dev/null || true; echo "$CRON" ) | sort | uniq | crontab

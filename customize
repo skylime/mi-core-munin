@@ -2,8 +2,8 @@
 #
 # Put customizations to your image in this file.
 
-MUNSTRAP_VERSION=0.1
-MUNIN_MASTER_ADMIN_VERSION=0.2
+MUNSTRAP_VERSION=0.2
+MUNIN_MASTER_ADMIN_VERSION=0.3
 
 # Custom versions and variables
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
@@ -19,7 +19,7 @@ rm -r /var/munin/*
 # Download and extract munstrap to /opt/local/etc/munin/munstrap
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
 (mkdir -p /opt/local/etc/munin/munstrap)
-curl -L "https://github.com/drscream/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | tar xz -C /opt/local/etc/munin/munstrap --strip-components=1
+curl -L "https://github.com/motu81/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | tar xz -C /opt/local/etc/munin/munstrap --strip-components=1
 ## Rename original template and create symlinks to activate munstrap
 (cd /opt/local/etc/munin; mv static static-orig; mv templates templates-orig; ln -s munstrap/static static; ln -s munstrap/templates templates)
 
