@@ -8,7 +8,7 @@ SETTINGS_FILE="/opt/munin_master_admin/munin_master_admin/settings.py"
 echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': '/var/munin_master_admin_db/db.sqlite3',}}" >> ${SETTINGS_FILE}
 
 # Init django data and create admin user
-/opt/munin_master_admin/manage.py syncdb --noinput
+(sudo -u www /opt/munin_master_admin/manage.py syncdb --noinput)
 
 ## Create cronjobs for munin_master_admin write_munin_config.py
 CRON="4,9,14,19,24,29,34,39,44,49,54,59 * * * * (/opt/munin_master_admin/manage.py write_munin_config)"
