@@ -1,9 +1,9 @@
 #!/bin/bash
 
 SETTINGS_FILE="/opt/munin_master_admin/munin_master_admin/settings.py"
-NAGIOS_ADMIN=${NAGIOS_ADMIN:-$(mdata-get nagios_admin 2>/dev/null)} || \
-NAGIOS_ADMIN=$(od -An -N8 -x /dev/random | head -1 | tr -d ' ');
-mdata-put nagios_admin ${NAGIOS_ADMIN}
+MUNIN_ADMIN=${MUNIN_ADMIN:-$(mdata-get munin_admin 2>/dev/null)} || \
+MUNIN_ADMIN=$(od -An -N8 -x /dev/random | head -1 | tr -d ' ');
+mdata-put munin_admin ${MUNIN_ADMIN}
 
 /opt/local/bin/python -c "from django.utils.crypto import get_random_string;print 'SECRET_KEY = r\"' + get_random_string(50, 'abcdefghijklmnopqrstuvwxyz0123456789\!@#$%^&*(-_=+)') + '\"'" >> ${SETTINGS_FILE}
 
@@ -14,7 +14,7 @@ echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': '/
 (sudo -u www /opt/munin_master_admin/manage.py syncdb --noinput)
 
 # Create superadmin user
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${NAGIOS_ADMIN}')" \
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${MUNIN_ADMIN}')" \
 	| /opt/munin_master_admin/manage.py shell
 
 ## Create cronjobs for munin_master_admin write_munin_config.py
