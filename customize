@@ -35,6 +35,10 @@ pip install -r /opt/munin_master_admin/req.txt
 # Import gunicorn SMF manifest
 svccfg import /tmp/gunicorn.xml
 
+# Create nginx ssl folder
+echo "* Create nginx ssl folder"
+mkdir -p /opt/local/etc/nginx/ssl
+
 # Clean up
 echo "* Cleaning up."
 rm -rf /root/*
