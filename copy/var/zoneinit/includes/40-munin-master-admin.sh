@@ -13,6 +13,8 @@ echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': '/
 
 # Because we run the app on a subdirectory
 echo "LOGIN_REDIRECT_URL = '/admin'" >> ${SETTINGS_FILE}
+echo "LOGIN_URL  = '/admin/accounts/login/'"  >> ${SETTINGS_FILE}
+echo "LOGOUT_URL = '/admin/accounts/logout/'" >> ${SETTINGS_FILE}
 
 # Init django data and create admin user
 (sudo -u www /opt/munin_master_admin/manage.py syncdb --noinput)
