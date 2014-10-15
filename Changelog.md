@@ -1,6 +1,29 @@
 # Changelog
 
-## 14.2.1
+## 14.2.2
+
+### New
+
+* version update. [Thomas Merkel]
+
+### Fix
+
+* add login logout url as variable. [Thomas Merkel]
+
+### Other
+
+* version update of munin_master interface. [Thomas Merkel]
+* Also support the pull request (latest version of munin_master_admin) [Thomas Merkel]
+
+    So be sure the proxy header script name is set correctly
+
+* To support the pull request which supports authentication we need to modify the LOGIN_REDIRECT_URL. [Thomas Merkel]
+
+    https://github.com/motu81/munin_master_admin/pull/2
+
+* Merge remote-tracking branch 'motu81/master' [Thomas Merkel]
+
+## 14.2.1 (2014-10-03)
 
 ### New
 
