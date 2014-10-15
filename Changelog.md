@@ -8,6 +8,7 @@
 
 ### Fix
 
+* typo in manifest file. [Thomas Merkel]
 * add login logout url as variable. [Thomas Merkel]
 
 ### Other
