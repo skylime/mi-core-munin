@@ -2,7 +2,7 @@
 # Configure nginx ssl certificate
 
 # SSL
-host=$(mdata-get sdc:hostname)
+host=$(hostname)
 cert_dir='/opt/local/etc/nginx/ssl/'
 
 # SSL configuration
