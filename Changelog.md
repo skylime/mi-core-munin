@@ -1,5 +1,30 @@
 # Changelog
 
+## %%version%% (unreleased)
+
+### New
+
+* Enable nginx config for cgi wrapper. [Thomas Merkel]
+* Provide new manifest.json file. [Thomas Merkel]
+* Provide new spawn-fcgi feature for munin-graph. [Thomas Merkel]
+
+  To support the munin zoom function provide a new fcgi wrapper.
+
+### Fix
+
+* Switch to `hostname` command to support also zones without an hostname but UUID. [Thomas Merkel]
+* Fix problem if you don&#x27;t use a delegate dataset for Munin. [Thomas Merkel]
+
+  This fix the problem in issue #1
+
+### Other
+
+* Fix FCGI service start and nginx socket path. [Thomas Merkel]
+* Remove unused gunicorn.xml import from the configure script and fix issue for gtar and tar. [Thomas Merkel]
+* Switch to new core-base image version and rename to mi-core-munin. [Thomas Merkel]
+
+  This image provides only munin so we should rename it to &quot;mi-core-munin&quot;. Switching to the newest mi-core-base image and copy the gunicorn.xml to the autoinclude and start folder.
+
 ## 14.2.2
 
 ### New
