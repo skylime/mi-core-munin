@@ -1,6 +1,6 @@
 # Changelog
 
-## %%version%% (unreleased)
+## 16.2.0
 
 ### New
 
