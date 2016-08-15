@@ -6,3 +6,6 @@ CRON="0,5,10,15,20,25,30,35,40,45,50,55 * * * * (sudo -u munin /opt/local/bin/mu
 ## Create localhost config for munin
 HOSTNAME=$(hostname)
 echo -e "[${HOSTNAME}]\n    address 127.0.0.1\n    use_node_name yes\n" > /opt/local/etc/munin/munin-conf.d/localhost.conf
+
+## Enable FCGI for munin-graph
+svcadm enable svc:/network/spawn-fcgi:munin-html

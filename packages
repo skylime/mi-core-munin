@@ -4,3 +4,4 @@ py27-gunicorn
 py27-pip
 py27-expat
 py27-sqlite3
+spawn-fcgi

@@ -1,2 +1,2 @@
 #!/bin/bash
-svcadm enable nginx
+svcadm enable svc:/pkgsrc/nginx:default
