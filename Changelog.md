@@ -1,5 +1,12 @@
 # Changelog
 
+## 16.2.1
+
+### Other
+
+* Switch to core-base 16.2.2. [Thomas Merkel]
+
+
 ## 16.2.0
 
 ### New
