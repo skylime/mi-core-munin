@@ -14,25 +14,27 @@ set -o errexit
 # Configuring image specific packages
 echo "* Configuring image specific packages.";
 
-# Cleanup /var/munin in order to set the dataset mountpoint (must be empty)
+echo "* Use default python 3.5"
+pkg_alternatives manual python35
+
+echo "* Cleanup /var/munin in order to set the dataset mountpoint (must be empty)"
 rm -r /var/munin/*
-# Download and extract munstrap to /opt/local/etc/munin/munstrap
+
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
 (mkdir -p /opt/local/etc/munin/munstrap)
 curl -L "https://github.com/motu81/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | gtar xz -C /opt/local/etc/munin/munstrap --strip-components=1
-## Rename original template and create symlinks to activate munstrap
+
+echo "* Rename original template and create symlinks to activate munstrap"
 (cd /opt/local/etc/munin; mv static static-orig; mv templates templates-orig; ln -s munstrap/static static; ln -s munstrap/templates templates)
 
-# Download and extract munin_master_admin to /opt/munin_master_admin
 echo "* Download and extract munin_master_admin to /opt/munin_master_admin"
 (mkdir -p /opt/munin_master_admin)
 curl -L "https://github.com/motu81/munin_master_admin/archive/v${MUNIN_MASTER_ADMIN_VERSION}.tar.gz" | gtar xz -C /opt/munin_master_admin --strip-components=1
 chown -R www:www /opt/munin_master_admin
 
-# Install required python packages
-pip install -r /opt/munin_master_admin/req.txt
+echo "* Install required python packages"
+pip3.5 install -r /opt/munin_master_admin/req.txt
 
-# Create nginx ssl folder
 echo "* Create nginx ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
 
