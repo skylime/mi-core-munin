@@ -6,7 +6,7 @@ MUNIN_ADMIN=$(od -An -N8 -x /dev/random | head -1 | tr -d ' ');
 mdata-put munin_admin ${MUNIN_ADMIN}
 
 # Create secret for django
-/opt/local/bin/python -c "from django.utils.crypto import get_random_string;print 'SECRET_KEY = r\"' + get_random_string(50, 'abcdefghijklmnopqrstuvwxyz0123456789\!@#$%^&*(-_=+)') + '\"'" >> ${SETTINGS_FILE}
+echo "SECRET_KEY = \"$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-100})\"" >> ${SETTINGS_FILE}
 
 # Change path to sqlite database (delegated dataset)
 echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': '/var/munin_master_admin_db/db.sqlite3',}}" >> ${SETTINGS_FILE}
