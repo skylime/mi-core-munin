@@ -1,7 +1,7 @@
 munin-master
 nginx
-py27-gunicorn
-py27-pip
-py27-expat
-py27-sqlite3
+py35-gunicorn
+py35-pip
+py35-expat
+py35-sqlite3
 spawn-fcgi
