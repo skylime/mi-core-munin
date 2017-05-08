@@ -20,7 +20,7 @@
 		"ssh_host_rsa_key.pub": {"type": "text", "description": "public SSH rsa key for the host daemon"},
 		"ssh_host_dsa_key":     {"type": "text", "description": "private SSH dsa key for the host daemon"},
 		"ssh_host_dsa_key.pub": {"type": "text", "description": "public SSH dsa key for the host daemon"},
-		"munin_master_allow":   {"type": "text", "description": "ip addresses (alternative hostname) of the munin master node"}
+		"munin_master_allow":   {"type": "text", "description": "ip addresses (alternative hostname) of the munin master node"},
 		"nginx_ssl":            {"type": "text", "description": "ssl certificate for nginx web interface"},
 		"munin_admin":          {"type": "text", "description": "admin password for munin admin interface"}
 	}

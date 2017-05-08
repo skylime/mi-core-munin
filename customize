@@ -3,7 +3,7 @@
 # Put customizations to your image in this file.
 
 MUNSTRAP_VERSION=0.2
-MUNIN_MASTER_ADMIN_VERSION=0.6
+MUNIN_MASTER_ADMIN_VERSION=0.7
 
 # Custom versions and variables
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
@@ -29,7 +29,7 @@ echo "* Rename original template and create symlinks to activate munstrap"
 
 echo "* Download and extract munin_master_admin to /opt/munin_master_admin"
 (mkdir -p /opt/munin_master_admin)
-curl -L "https://github.com/motu81/munin_master_admin/archive/v${MUNIN_MASTER_ADMIN_VERSION}.tar.gz" | gtar xz -C /opt/munin_master_admin --strip-components=1
+curl -L "https://github.com/drscream/munin_master_admin/archive/v${MUNIN_MASTER_ADMIN_VERSION}.tar.gz" | gtar xz -C /opt/munin_master_admin --strip-components=1
 chown -R www:www /opt/munin_master_admin
 
 echo "* Install required python packages"
