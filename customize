@@ -22,7 +22,7 @@ rm -r /var/munin/*
 
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
 (mkdir -p /opt/local/etc/munin/munstrap)
-curl -L "https://github.com/motu81/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | gtar xz -C /opt/local/etc/munin/munstrap --strip-components=1
+curl -L "https://github.com/drscream/munstrap/archive/v${MUNSTRAP_VERSION}.tar.gz" | gtar xz -C /opt/local/etc/munin/munstrap --strip-components=1
 
 echo "* Rename original template and create symlinks to activate munstrap"
 (cd /opt/local/etc/munin; mv static static-orig; mv templates templates-orig; ln -s munstrap/static static; ln -s munstrap/templates templates)
