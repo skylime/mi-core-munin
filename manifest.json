@@ -5,7 +5,7 @@
 	"organization": "SkyLime",
 	"brand":        "Instance",
 	"homepage":     "https://github.com/skylime/mi-core-munin",
-	"base":         "8b11455c-9a90-47d8-a81a-77c4c2e7343e",
+	"base":         "06d72570-a857-4ae4-98ae-a175f1507f53",
 	"customer_metadata": {
 		"admin_authorized_keys": {"type": "text", "description": "SSH public authorized key(s) for the admin user"},
 		"root_authorized_keys": {"type": "text", "description": "SSH public authorized key(s) for the root user"},
@@ -22,6 +22,7 @@
 		"ssh_host_dsa_key.pub": {"type": "text", "description": "public SSH dsa key for the host daemon"},
 		"munin_master_allow":   {"type": "text", "description": "ip addresses (alternative hostname) of the munin master node"},
 		"nginx_ssl":            {"type": "text", "description": "ssl certificate for nginx web interface"},
+		"nginx_auth":           {"type": "text", "description": "htpasswd data newline seperated to protect the web interface"},
 		"munin_admin":          {"type": "text", "description": "admin password for munin admin interface"}
 	}
 }

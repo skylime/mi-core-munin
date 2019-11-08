@@ -8,6 +8,7 @@ No mdata variable is required. Everything could be automatically generated on
 provision state. We recommend a valid `nginx_ssl` certificate.
 
 - `nginx_ssl`: ssl certificate for nginx web interface
+- `nginx_auth`: htpasswd data to protect the web interface (newline seperated)
 - `munin_admin`: admin password for munin admin interface
 
 ## services
