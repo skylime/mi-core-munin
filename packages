@@ -1,7 +1,8 @@
 munin-master
+munin-node
 nginx
-py35-gunicorn
-py35-pip
-py35-expat
-py35-sqlite3
+py37-gunicorn
+py37-pip
+py37-expat
+py37-sqlite3
 spawn-fcgi
