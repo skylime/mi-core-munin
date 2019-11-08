@@ -2,6 +2,9 @@
 UUID=$(mdata-get sdc:uuid)
 DDS=zones/${UUID}/data
 
+# Be sure munin-node is disabled to nothing is logging into the current folders
+svcadm disable munin-node || true
+
 if zfs list ${DDS} 1>/dev/null 2>&1; then
 	zfs create ${DDS}/munin   || true
 	zfs create ${DDS}/munin-conf.d || true
