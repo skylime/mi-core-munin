@@ -17,7 +17,7 @@ echo "LOGIN_URL  = '/admin/accounts/login/'"  >> ${SETTINGS_FILE}
 echo "LOGOUT_URL = '/admin/accounts/logout/'" >> ${SETTINGS_FILE}
 
 # Init django data and create admin user
-(sudo -u www /opt/munin_master_admin/manage.py syncdb --noinput)
+(sudo -u www /opt/munin_master_admin/manage.py migrate --noinput --fake-initial)
 
 # Create superadmin user
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${MUNIN_ADMIN}')" \
