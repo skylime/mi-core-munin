@@ -2,11 +2,5 @@
 # certificate as fallback. This will allow us to enable nginx or any
 # webserver.
 
-# Default
-SSL_HOME='/opt/local/etc/nginx/ssl/'
-
-# Create folder if it doesn't exists
-mkdir -p "${SSL_HOME}"
-
 # Self-signed certificate generator
-/opt/core/bin/ssl-selfsigned.sh -d ${SSL_HOME} -f nginx
+/opt/core/bin/ssl-selfsigned.sh -d /opt/local/etc/nginx/ssl/ -f nginx
