@@ -1,5 +1,25 @@
 # Changelog
 
+## 19.3.0
+
+### New
+
+* Provide Let's Encrypt support for munin WebUI. [Thomas Merkel]
+* Document new nginx_auth mdata variable. [Thomas Merkel]
+* Switch to Python 3.7 for munin-master-admin tool. [Thomas Merkel]
+* Update to latest core-base release and munstrap theme. [Thomas Merkel]
+
+### Fix
+
+* Disable munin-node before delegate dataset is mounted. [Thomas Merkel]
+
+### Other
+
+* Switch to manage.py migrate from syncdb. [Thomas Merkel]
+* Modify LICENSE to SkyLime GmbH. [Thomas Merkel]
+* Switch to drscream releases for munin_master_admin. [Thomas Merkel]
+* Use default unix tools for SECRET_KEY. [Thomas Merkel]
+
 ## 16.2.1
 
 ### Other
