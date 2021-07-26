@@ -14,8 +14,8 @@ set -o errexit
 # Configuring image specific packages
 echo "* Configuring image specific packages.";
 
-echo "* Use default python 3.7"
-pkg_alternatives manual python37
+echo "* Use default python 3.8"
+pkg_alternatives manual python38
 
 echo "* Cleanup /var/munin in order to set the dataset mountpoint (must be empty)"
 rm -r /var/munin/*
@@ -33,7 +33,7 @@ curl -L "https://github.com/drscream/munin_master_admin/archive/v${MUNIN_MASTER_
 chown -R www:www /opt/munin_master_admin
 
 echo "* Install required python packages"
-pip3.7 install -r /opt/munin_master_admin/req.txt
+pip install -r /opt/munin_master_admin/req.txt
 
 echo "* Create nginx ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
