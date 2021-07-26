@@ -1,5 +1,11 @@
 # Changelog
 
+## 20.4.0
+
+### New
+
+* Upgrade to core-base 20.4 release and Python version 3.8. [Thomas Merkel]
+
 ## 19.3.0
 
 ### New
