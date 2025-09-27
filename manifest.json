@@ -1,11 +1,11 @@
 {
 	"name":         "core-munin",
-	"version":      "20.4.0",
+	"version":      "24.4.0",
 	"description":  "core.io Munin Server",
 	"organization": "SkyLime",
 	"brand":        "Instance",
 	"homepage":     "https://github.com/skylime/mi-core-munin",
-	"base":         "b17e3cc1-5993-4af9-9e5e-70653fa856f6",
+	"base":         "8e735415-2575-4c0f-92bc-d6f2f59bdef1",
 	"customer_metadata": {
 		"admin_authorized_keys": {"type": "text", "description": "SSH public authorized key(s) for the admin user"},
 		"root_authorized_keys": {"type": "text", "description": "SSH public authorized key(s) for the root user"},

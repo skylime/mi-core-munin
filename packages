@@ -1,8 +1,8 @@
 munin-master
 munin-node
 nginx
-py38-gunicorn
-py38-pip
-py38-expat
-py38-sqlite3
+py312-gunicorn
+py312-pip
+#py312-expat
+#py312-sqlite3
 spawn-fcgi

@@ -3,7 +3,12 @@
 # Put customizations to your image in this file.
 
 MUNSTRAP_VERSION="master"
-MUNIN_MASTER_ADMIN_VERSION=0.7
+MUNIN_MASTER_ADMIN_VERSION=0.8
+
+# Munin plugins
+MUNIN_PLUGINS="
+	munin_status
+"
 
 # Custom versions and variables
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
@@ -12,31 +17,41 @@ PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 set -o errexit
 
 # Configuring image specific packages
-echo "* Configuring image specific packages.";
+echo "* Configuring image specific packages."
 
-echo "* Use default python 3.8"
-pkg_alternatives manual python38
+echo "* Use default python 3.12"
+pkg_alternatives manual python312
 
 echo "* Cleanup /var/munin in order to set the dataset mountpoint (must be empty)"
 rm -r /var/munin/*
 
 echo "* Download and extract munstrap to /opt/local/etc/munin/munstrap"
-(mkdir -p /opt/local/etc/munin/munstrap)
+mkdir -p /opt/local/etc/munin/munstrap
 curl -L "https://github.com/drscream/munstrap/archive/${MUNSTRAP_VERSION}.tar.gz" | gtar xz -C /opt/local/etc/munin/munstrap --strip-components=1
 
 echo "* Rename original template and create symlinks to activate munstrap"
-(cd /opt/local/etc/munin; mv static static-orig; mv templates templates-orig; ln -s munstrap/static static; ln -s munstrap/templates templates)
+(
+  cd /opt/local/etc/munin
+  mv static static-orig
+  mv templates templates-orig
+  ln -s munstrap/static static
+  ln -s munstrap/templates templates
+)
 
 echo "* Download and extract munin_master_admin to /opt/munin_master_admin"
-(mkdir -p /opt/munin_master_admin)
+mkdir -p /opt/munin_master_admin
 curl -L "https://github.com/drscream/munin_master_admin/archive/v${MUNIN_MASTER_ADMIN_VERSION}.tar.gz" | gtar xz -C /opt/munin_master_admin --strip-components=1
 chown -R www:www /opt/munin_master_admin
 
 echo "* Install required python packages"
-pip install -r /opt/munin_master_admin/req.txt
+pip install -r /opt/munin_master_admin/requirements.txt
+pip install pygtail
 
 echo "* Create nginx ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
+
+echo "* Activate munin plugins"
+/opt/core/bin/munin-node-plugins ${MUNIN_PLUGINS}
 
 echo "* Cleanup home/admin because of delegate dataset usage"
 rm -rf /home/admin/.[^.]*
